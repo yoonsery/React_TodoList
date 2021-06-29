@@ -16,5 +16,3 @@ Users are able to
 - styled-component
 - Context API
 - useReducer
-
-### Reference
