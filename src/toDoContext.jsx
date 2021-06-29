@@ -3,22 +3,22 @@ import React, { createContext, useContext, useReducer, useRef } from 'react';
 const initialTodos = [
   {
     id: 1,
-    text: 'create project',
+    text: 'sample',
     done: true,
   },
   {
     id: 2,
-    text: 'styling component',
+    text: 'done!',
     done: true,
   },
   {
     id: 3,
-    text: 'create Context',
+    text: 'Good morning 🙂,
     done: false,
   },
   {
     id: 4,
-    text: 'implement function',
+    text: 'Sleep well 😴',
     done: false,
   },
 ];
