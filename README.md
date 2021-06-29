@@ -1,4 +1,4 @@
-# [✅ To Do List](sery-react-todolist.netlify.app)
+# [✅ To Do List](https://sery-react-todolist.netlify.app/)
 
 This project is to study react & styled-components and the reference is [here](https://react.vlpt.us/mashup-todolist/)
 
@@ -16,5 +16,3 @@ Users are able to
 - styled-component
 - Context API
 - useReducer
-
-### Reference
