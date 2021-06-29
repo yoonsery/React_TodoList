@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MdAdd } from 'react-icons/md';
 import styled, { css } from 'styled-components';
+import { useTodoDispatch, useTodoNextId } from '../toDoContext';
 
 const CircleButton = styled.button`
   background: #38d9a9;
@@ -73,14 +74,44 @@ const Input = styled.input`
 
 function ToDoCreate() {
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState('');
+
+  const dispatch = useTodoDispatch();
+  const nextId = useTodoNextId();
+
   const onToggle = () => setOpen(!open);
+  const onChange = (e) => setValue(e.target.value);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (value.trim() === '') {
+      setValue('');
+      setOpen(false);
+      return;
+    }
+    dispatch({
+      type: 'CREATE',
+      todo: {
+        id: nextId.current,
+        text: value,
+        done: false,
+      },
+    });
+    setValue('');
+    setOpen(false);
+    nextId.current += 1;
+  };
 
   return (
     <>
       {open && (
         <InsertFormPositioner>
-          <InsertForm>
-            <Input autoFocus placeholder="Enter your todo" />
+          <InsertForm onSubmit={onSubmit}>
+            <Input
+              autoFocus
+              placeholder="Enter your todo"
+              onChange={onChange}
+              value={value}
+            />
           </InsertForm>
         </InsertFormPositioner>
       )}
@@ -91,4 +122,4 @@ function ToDoCreate() {
   );
 }
 
-export default ToDoCreate;
+export default React.memo(ToDoCreate);
