@@ -13,7 +13,7 @@ const initialTodos = [
   },
   {
     id: 3,
-    text: 'Good morning 🙂,
+    text: 'Good morning 🙂',
     done: false,
   },
   {
