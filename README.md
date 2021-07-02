@@ -1,7 +1,7 @@
 # [✅ To Do List](https://sery-react-todolist.netlify.app/)
 
 This project is to study react & styled-components and the reference is [here](https://react.vlpt.us/mashup-todolist/) <br />
-I add feature that existing item can be modified
+I added function that make existing item modified
 
 ## Features
 

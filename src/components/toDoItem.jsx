@@ -67,6 +67,7 @@ function ToDoItem({ id, done, text }) {
   const onRemove = () => dispatch({ type: 'REMOVE', id });
 
   const [value, setValue] = useState(text);
+
   const onChange = (e) => {
     e.preventDefault();
     const newValue = e.target.value;
@@ -78,15 +79,12 @@ function ToDoItem({ id, done, text }) {
       <CheckCircle done={done} onClick={onToggle}>
         {done && <MdDone />}
       </CheckCircle>
-      <Text
+      <Text //
         done={done}
-        name={text}
         value={value}
         onChange={onChange}
         type="text"
-      >
-        {/* {text} */}
-      </Text>
+      ></Text>
       <Remove onClick={onRemove}>
         <MdDelete />
       </Remove>
