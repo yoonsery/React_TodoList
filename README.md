@@ -13,7 +13,7 @@ Users are able to
 - remove each item from the list
 - modify existing item
 
-## ✍🏻 What I learn
+## What I learn ✍🏻
 
 - styled-component
 - Context API
