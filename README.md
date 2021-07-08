@@ -18,3 +18,15 @@ Users are able to
 - styled-component
 - Context API
 - useReducer
+
+## Setup
+
+Install dependencies
+```sh
+$ npm install
+```
+
+Run application
+```sh
+$ npm start
+```
