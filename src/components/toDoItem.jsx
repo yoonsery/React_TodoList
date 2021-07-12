@@ -1,7 +1,20 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { MdDone, MdDelete } from 'react-icons/md';
+import { MdDone, MdDelete, MdEdit } from 'react-icons/md';
 import { useTodoDispatch } from '../toDoContext';
+
+const Edit = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dee2e6;
+  font-size: 24px;
+  cursor: pointer;
+  &:hover {
+    color: #ff6b6b;
+  }
+  display: none;
+`;
 
 const Remove = styled.div`
   display: flex;
@@ -22,10 +35,15 @@ const ToDoItemBlock = styled.div`
   padding-top: 12px;
   padding-bottom: 12px;
   &:hover {
-    ${Remove} {
+    ${Remove}, ${Edit} {
       display: initial;
     }
   }
+  ${(props) =>
+    props.done &&
+    css`
+      display: none;
+    `}
 `;
 
 const CheckCircle = styled.div`
@@ -57,7 +75,6 @@ const Text = styled.input`
     props.done &&
     css`
       color: #ced4da;
-      pointer-events: none;
     `}
 `;
 
@@ -67,11 +84,29 @@ function ToDoItem({ id, done, text }) {
   const onRemove = () => dispatch({ type: 'REMOVE', id });
 
   const [value, setValue] = useState(text);
+  const textRef = useRef();
+  const [isEditable, setIsEditable] = useState(false);
 
   const onChange = (e) => {
     e.preventDefault();
-    const newValue = e.target.value;
-    setValue(newValue);
+    if (!setIsEditable) {
+      return;
+    }
+    const updated = textRef.current.value;
+    setValue(updated);
+  };
+
+  const onBlur = () => {
+    textRef.current.readOnly = true;
+    if (textRef.current.value.trim() === '') {
+      onRemove();
+    }
+  };
+
+  const onEdit = () => {
+    setIsEditable(!isEditable);
+    textRef.current.focus();
+    textRef.current.readOnly = false;
   };
 
   return (
@@ -80,11 +115,17 @@ function ToDoItem({ id, done, text }) {
         {done && <MdDone />}
       </CheckCircle>
       <Text //
+        ref={textRef}
         done={done}
         value={value}
+        readOnly={true}
         onChange={onChange}
+        onBlur={onBlur}
         type="text"
       ></Text>
+      <Edit onClick={onEdit}>
+        <MdEdit />
+      </Edit>
       <Remove onClick={onRemove}>
         <MdDelete />
       </Remove>
