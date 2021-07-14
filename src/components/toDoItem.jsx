@@ -123,8 +123,8 @@ function ToDoItem({ id, done, text }) {
         onBlur={onBlur}
         type="text"
       ></Text>
-      <Edit onClick={onEdit}>
-        <MdEdit />
+      <Edit onClick={onEdit} done={done}>
+        {!done && <MdEdit />}
       </Edit>
       <Remove onClick={onRemove}>
         <MdDelete />
