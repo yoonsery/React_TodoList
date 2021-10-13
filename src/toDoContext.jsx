@@ -3,7 +3,7 @@ import React, { createContext, useContext, useReducer, useRef } from 'react';
 const initialTodos = [
   {
     id: 1,
-    text: 'sample',
+    text: 'test',
     done: true,
   },
   {
