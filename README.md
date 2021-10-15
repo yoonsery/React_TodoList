@@ -21,7 +21,7 @@ Users are able to
 
 ### Note
 
-When I added editing feature I struggled with it. Because when I deleted the whole text from the input text area to rewrite, it was removed automatically from the todo list. So I add `onBlur` event to textRef. The todo list item is removed from the list only when the focus is out and the input area is empty
+When I added editing feature I struggled with it. Because when I deleted the whole text from the input text area to rewrite, it was removed from the todo list automatically. So I add `onBlur` event to textRef. The todo list item is removed from the list only when the focus is out and the input area is empty
 
 ## Setup
 
